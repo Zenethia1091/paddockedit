@@ -145,6 +145,14 @@ a.card:hover{border-color:var(--red)}
 .btn{border:1px solid var(--line);border-radius:999px;padding:11px 22px;font-weight:700;font-size:14.5px;background:var(--panel2)}
 .btn.primary{background:var(--red);border-color:var(--red);color:#fff}
 footer{padding:28px 0 40px;color:var(--mut);font-size:13px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* guides dropdown */
+.dd{position:relative}
+.dd-btn{background:none;border:0;padding:0;font:inherit;letter-spacing:inherit;color:var(--mut);cursor:pointer}
+.dd-btn:hover{color:var(--ink)}
+.dd-menu{display:none;position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);background:rgba(11,15,20,.97);border:1px solid var(--line);padding:8px 0;min-width:190px;z-index:60;flex-direction:column}
+.dd.open .dd-menu{display:flex}
+.dd-menu a{padding:7px 18px;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -153,11 +161,16 @@ footer{padding:28px 0 40px;color:var(--mut);font-size:13px;display:flex;justify-
     <a class="logo" href="/">THE<span>PADDOCK</span>EDIT</a>
     <nav>
       <a href="/" data-en="Home" data-zh="首页">Home</a>
-      <a href="/mexico" data-en="Mexico City Guide" data-zh="墨西哥城指南">Mexico City Guide</a>
-      <a href="/saopaulo" data-en="São Paulo Guide" data-zh="圣保罗指南">São Paulo Guide</a>
-      <a href="/lasvegas" data-en="Las Vegas Guide" data-zh="拉斯维加斯指南">Las Vegas Guide</a>
-      <a href="/qatar" data-en="Qatar Guide" data-zh="卡塔尔指南">Qatar Guide</a>
-      <a href="/abudhabi" data-en="Abu Dhabi Guide" data-zh="阿布扎比指南">Abu Dhabi Guide</a>
+      <div class="dd">
+        <button class="dd-btn" type="button" aria-haspopup="true" aria-expanded="false" onclick="toggleDD(event)"><span data-en="Guides" data-zh="分站指南">Guides</span> ▾</button>
+        <div class="dd-menu">
+          <a href="/mexico" data-en="Mexico City Guide" data-zh="墨西哥城指南">Mexico City Guide</a>
+          <a href="/saopaulo" data-en="São Paulo Guide" data-zh="圣保罗指南">São Paulo Guide</a>
+          <a href="/lasvegas" data-en="Las Vegas Guide" data-zh="拉斯维加斯指南">Las Vegas Guide</a>
+          <a href="/qatar" data-en="Qatar Guide" data-zh="卡塔尔指南">Qatar Guide</a>
+          <a href="/abudhabi" data-en="Abu Dhabi Guide" data-zh="阿布扎比指南">Abu Dhabi Guide</a>
+        </div>
+      </div>
       <a href="/#watch" data-en="The Edit" data-zh="精选">The Edit</a>
       <a href="/#contact" data-en="Contact" data-zh="联系">Contact</a>
     </nav>
@@ -324,6 +337,18 @@ function setLang(l){
   try{ saved = localStorage.getItem('tpe-lang') || 'en'; }catch(e){}
   if(saved === 'zh'){ setLang('zh'); }
 })();
+function toggleDD(e){
+  e.stopPropagation();
+  var dd = e.currentTarget.parentElement;
+  var open = dd.classList.toggle('open');
+  e.currentTarget.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+document.addEventListener('click', function(){
+  document.querySelectorAll('.dd.open').forEach(function(dd){
+    dd.classList.remove('open');
+    dd.querySelector('.dd-btn').setAttribute('aria-expanded','false');
+  });
+});
 </script>
 </body>
 </html>
