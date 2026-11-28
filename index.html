@@ -52,6 +52,15 @@ nav a{color:var(--mut)} nav a:hover{color:var(--ink)}
 .cta{display:inline-flex;align-items:center;gap:10px;margin-top:26px;background:var(--red);color:#fff;font-weight:700;padding:13px 24px;border-radius:999px;font-size:15px}
 .cta:hover{background:#b00500}
 .hero .meta{margin-top:16px;color:var(--mut);font-size:13.5px}
+/* play banner */
+.playband{padding:30px 0 6px}
+.playcard{display:flex;align-items:center;justify-content:space-between;gap:18px;background:linear-gradient(120deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+.playcard:hover{border-color:var(--red)}
+.playcard .pk{color:var(--red);font-weight:700;letter-spacing:.22em;font-size:11.5px;text-transform:uppercase}
+.playcard h3{font-size:23px;font-weight:800;margin:4px 0 2px}
+.playcard p{color:var(--mut);font-size:14.5px;max-width:640px}
+.playbtn{flex:none;background:var(--red);color:#fff;font-weight:700;padding:12px 22px;border-radius:999px;font-size:14.5px}
+@media(max-width:760px){.playcard{flex-direction:column;align-items:flex-start}}
 /* sections */
 section{padding:56px 0;border-bottom:1px solid var(--line)}
 .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:26px}
@@ -199,6 +208,19 @@ footer{padding:28px 0 40px;color:var(--mut);font-size:13px;display:flex;justify-
 </div>
 
 
+
+<div class="playband">
+  <div class="wrap">
+    <a class="playcard" href="/play">
+      <div>
+        <div class="pk" data-en="New · Mini Game" data-zh="新上线 · 小游戏">New · Mini Game</div>
+        <h3 class="serif">Race Reflex</h3>
+        <p data-en="A tiny motorsport arcade — five reflex games, bilingual and free in your browser. How fast are your race reactions?" data-zh="一个小小的赛车街机——五个反应力小游戏，中英双语，浏览器里免费玩。你的比赛反应有多快？">A tiny motorsport arcade — five reflex games, bilingual and free in your browser. How fast are your race reactions?</p>
+      </div>
+      <span class="playbtn"><span data-en="Play now" data-zh="开始玩">Play now</span> →</span>
+    </a>
+  </div>
+</div>
 
 <section id="about">
   <div class="wrap">
